@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "@thedave42/f1tv-dl",
   "version": "0.25.18-alpha.0",
@@ -13,22 +12,29 @@
   "author": "dave@digitalnoise.net",
   "license": "ISC",
   "dependencies": {
+    "@thedave42/f1tv-namer": "^0.0.5",
     "@thedave42/fluent-ffmpeg": "^1.0.5",
-    "axios": "^0.26.1",
+    "@wickednesspro/bento4-latest": "^1.1.3",
+    "axios": "^1.8.4",
+    "axios-cookiejar-support": "^5.0.5",
     "dotenv": "^16.0.0",
+    "fluent-bento4": "^1.0.8",
     "hls-parser": "^0.10.4",
     "inquirer": "^8.2.2",
+    "iso-639": "^0.2.2",
     "log-timestamp": "^0.3.0",
     "loglevel": "^1.8.0",
     "minimist": "^1.2.6",
     "mpd-parser": "^0.21.1",
-    "puppeteer": "^13.5.2",
+    "pretty-bytes-es5": "^5.1.9",
+    "puppeteer": "^24.4.0",
     "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-adblocker": "^2.12.0",
     "puppeteer-extra-plugin-stealth": "^2.9.0",
     "xml-query": "^1.5.0",
     "xml-reader": "^2.4.3",
-    "yargs": "^17.4.0"
+    "yargs": "^17.4.0",
+    "yt-dlp-wrap": "^2.3.12"
   },
   "devDependencies": {
     "@microsoft/eslint-formatter-sarif": "^2.1.7",

@@ -1,4 +1,4 @@
-# f1tv-dl
+# f1tv-ytdlp
 
 Watch videos locally from f1tv website
 
@@ -41,24 +41,16 @@ Options:
       --stream-url           Return the tokenized URL for use in another
                              application and do not download the video
                                                       [boolean] [default: false]
+  -N, --concurrent-fragments  Number of fragments of a dash/hlsnative video that
+                              should be downloaded concurrently
+                                                           [number] [default: 1]
+  -S, --series-notation       Fallback series notation for file naming in the
+                              event TVDB does not find a match (i.e. S2024E01)
+                                                                        [string]
   -l, --log-level            Set the log level
           [choices: "trace", "debug", "info", "warn", "error"] [default: "info"]
 ```
 ## Use
-
-Use npm to install.
-
-([ffmpeg and ffprobe](https://www.ffmpeg.org/) are required and need to be present in the path)
-
-```
-npm i -g @thedave42/f1tv-dl
-```
-
-or use Docker (no need to install ffmpeg)
-
-```
-docker run -v <your local directory>:/download ghcr.io/thedave42/f1tv-dl-docker:latest -o /download <url> [options]
-```
 
 Username and password can also be read from the environment variables `F1TV_USER` and `F1TV_PASS`.
 
@@ -66,17 +58,17 @@ Username and password can also be read from the environment variables `F1TV_USER
 
 Log in to your f1tv account, navigate to the video you want to watch, and copy the url from your browser.
 
-`f1tv-dl <url>`
+`f1tv-ytdlp <url>`
 
 ## See a list of different video feeds from a race with multiple feeds
 
-`f1tv-dl <url> --channel-list`
+`f1tv-ytdlp <url> --channel-list`
 
 ## Download the data channel stream from a race
 
-`f1tv-dl <url> -c DATA`
+`f1tv-ytdlp <url> -c DATA`
 
 ## Add Dutch audio from the international broadcast feed 
 
-`f1tv-dl <url> -i nld`
+`f1tv-ytdlp <url> -i nld`
 
