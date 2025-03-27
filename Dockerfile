@@ -1,15 +1,28 @@
-FROM debian:buster-slim
+FROM alpine:3.21
 
-RUN apt-get update
-RUN apt-get install -y curl
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get update
-RUN apt-get install -y nodejs
-RUN apt-get install -y ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils 
-RUN apt-get install -y ffmpeg
+# environment settings
+ENV SHELL="/bin/bash"
 
-WORKDIR /f1tv
+# copy local files
 COPY . /f1tv
-RUN npm i --omit=dev
+WORKDIR /f1tv
 
-ENTRYPOINT [ "/bin/sh", "run.sh" ]
+# prepare environemnt
+RUN \
+  echo "**** install runtime packages ****" && \
+  apk add --no-cache --update \
+    bash \
+    nodejs \
+    npm \
+    yt-dlp && \
+  echo "**** install app dependencies ****" && \
+    npm i && \
+  echo "**** cleanup ****" && \
+  rm -rf \
+    /tmp/*
+
+# volumes
+VOLUME /dl
+
+# entrypoint
+ENTRYPOINT ["/usr/bin/node", "index.js"]
